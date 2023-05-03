@@ -1,13 +1,28 @@
 <?php
 
-// Obtém a URL do serviço
-$url = 'http://exemplo.com/servico?wsdl';
+    // Define a URL do WSDL do serviço
+    $url = 'https://www.crcind.com/csp/samples/SOAP.Demo.cls?wsdl';
 
-// Cria o objeto SoapClient
-$client = new SoapClient($url);
+    // Define os parâmetros para a chamada do método
+    $params = array(
+        'Arg' => 'hello world',
+    );
 
-// Chama um método do serviço
-$result = $client->__soapCall('metodo', array('parametro1' => 'valor1', 'parametro2' => 'valor2'));
+    // Define as opções para a conexão SOAP
+    $options = array(
+        'trace' => 1,
+        'exceptions' => true,
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ),
+    );
 
-// Imprime o resultado
-print_r($result);
+    // Cria o objeto SOAPClient
+    $client = new SOAPClient($url, $options);
+
+    // Chama o método do serviço
+    $result = $client->Test($params);
+
+    // Imprime o resultado
+    print_r($result);
