@@ -1,28 +1,28 @@
 <?php
 
-    // Define a URL do WSDL do serviço
-    $url = 'https://www.crcind.com/csp/samples/SOAP.Demo.cls?wsdl';
+// Define a URL do WSDL do serviço
+$wsdl = 'https://www.crcind.com/csp/samples/SOAP.Demo.CLS?WSDL';
 
-    // Define os parâmetros para a chamada do método
-    $params = array(
-        'Arg' => 'hello world',
-    );
+// Define as opções para o cliente SOAP
+$options = array(
+    'soap_version' => SOAP_1_2,
+    'trace' => 1,
+    'exceptions' => true,
+);
 
-    // Define as opções para a conexão SOAP
-    $options = array(
-        'trace' => 1,
-        'exceptions' => true,
-        'ssl' => array(
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-        ),
-    );
+// Cria o objeto SoapClient
+$client = new SoapClient($wsdl, $options);
 
-    // Cria o objeto SOAPClient
-    $client = new SOAPClient($url, $options);
+// Chama os métodos
+$resultAddInteger = $client->AddInteger(['Arg1'=>50, 'Arg2'=>60]);
+$resultDivideInteger = $client->DivideInteger(['Arg1'=>50, 'Arg2'=>60]);
+$resultMission = $client->Mission();
 
-    // Chama o método do serviço
-    $result = $client->Test($params);
+// Imprime o resultado
+print_r($resultAddInteger);
+echo'<br>';
+print_r($resultDivideInteger);
+echo'<br>';
+print_r($resultMission);
 
-    // Imprime o resultado
-    print_r($result);
+?>
