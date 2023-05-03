@@ -14,7 +14,7 @@ $options = [
 $client = new SoapClient($wsdl, $options);
 
 // Chama os métodos
-$resultAddInteger = $client->AddInteger(['Arg1'=>50, 'Arg2'=>60]);
+$resultAddInteger = $client->getByName(['name'=>'HAAAA']);
 $resultDivideInteger = $client->DivideInteger(['Arg1'=>50, 'Arg2'=>60]);
 $resultMission = $client->Mission();
 
