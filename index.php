@@ -13,8 +13,8 @@ $options = [
 // Cria o objeto SoapClient
 $client = new SoapClient($wsdl, $options);
 
-// Chama os métodos
-$resultAddInteger = $client->getByName(['name'=>'HAAAA']);
+// Chama os métodos0
+$resultAddInteger = $client->AddInteger(['Arg1'=>50, 'Arg2'=>60]);
 $resultDivideInteger = $client->DivideInteger(['Arg1'=>50, 'Arg2'=>60]);
 $resultMission = $client->Mission();
 
